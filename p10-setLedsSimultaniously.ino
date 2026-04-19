@@ -18,6 +18,8 @@ void setup() {
   pinMode(YELLOW_LED_PIN, OUTPUT);
   pinMode(GREEN_LED_PIN, OUTPUT);
 
+  pinMode(POTENTIOMETER_PIN, INPUT);
+
   digitalWrite(RED_LED_PIN, redLedState);
   digitalWrite(YELLOW_LED_PIN, yellowLedState);
   digitalWrite(GREEN_LED_PIN, greenLedState);
@@ -44,7 +46,9 @@ void loop() {
   }
 
   //Green LED - potentiometer
+  analogWrite(GREEN_LED_PIN, analogRead(POTENTIOMETER_PIN)/4);
 
-  //Yello LED - Button
+  //Yellow LED - Button
+  
 
 }
