@@ -2,6 +2,7 @@
 #define YELLOW_LED_PIN 10
 #define GREEN_LED_PIN 11
 #define POTENTIOMETER_PIN A2
+#define BUTTON_PIN 3
 
 int redLedState = LOW;
 int yellowLedState = LOW;
@@ -19,6 +20,7 @@ void setup() {
   pinMode(GREEN_LED_PIN, OUTPUT);
 
   pinMode(POTENTIOMETER_PIN, INPUT);
+  pinMode(BUTTON_PIN, INPUT);
 
   digitalWrite(RED_LED_PIN, redLedState);
   digitalWrite(YELLOW_LED_PIN, yellowLedState);
@@ -48,7 +50,14 @@ void loop() {
   //Green LED - potentiometer
   analogWrite(GREEN_LED_PIN, analogRead(POTENTIOMETER_PIN)/4);
 
-  //Yellow LED - Button
-  
-
+  //Yellow LED - button
+  if(digitalRead(BUTTON_PIN) == HIGH) {
+    if(yellowLedState == LOW) {
+      yellowLedState = HIGH;
+      digitalWrite(YELLOW_LED_PIN, yellowLedState);
+    }
+  } else {
+    yellowLedState = LOW;
+    digitalWrite(YELLOW_LED_PIN, yellowLedState);
+  }
 }
